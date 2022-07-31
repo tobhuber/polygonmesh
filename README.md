@@ -10,7 +10,7 @@ These are:
 - argparse
 - random
 - PIL
-- 
+- svgwrite
 
 ### How to use it
 run `python triangle_generator.py --help` to view all available parameter.
