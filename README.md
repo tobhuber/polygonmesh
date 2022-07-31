@@ -16,4 +16,4 @@ run `python triangle_generator.py --help` to view all available parameter.
 Example command: 
 `python triangle_generator.py --width 2000 --heigh 600 --grid 37 --variance 0.2 --color-variance 0.01 --gradient-from "#4b42f5" --gradient-to "#700f0f" --outline-intensity 1`
 
-[Fade from #0049e6 to #018506](/demo_pictures/triangles1.png)
+![Fade from #0049e6 to #018506](https://github.com/tobhuber/polygonmesh/blob/main/triangle.png?raw=true)
