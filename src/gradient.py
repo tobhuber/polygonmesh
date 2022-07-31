@@ -18,5 +18,5 @@ class Gradient():
         return result
 
     def generate_gradient(self, width, height, start, stop):
-        array = self.get_gradient_3d(width, height, start, stop, (False, True, True))
+        array = self.get_gradient_3d(width, height, start, stop, (False, False, True))
         return Image.fromarray(np.uint8(array))
