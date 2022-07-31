@@ -1,2 +1,3 @@
 *.png
 *.svg
+src/__pycache__
