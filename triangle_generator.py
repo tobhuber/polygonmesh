@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--width", help="width of the picture in pixel", type=int)
 parser.add_argument("--height", help="height of the picture in pixel", type=int)
 parser.add_argument("--grid", default=28, help="grid size", type=int)
-parser.add_argument("--variance", default=1, help="how uniform the triangles are [0,0.5)", type=float)
+parser.add_argument("--variance", default=0.2, help="how uniform the triangles are [0,0.5)", type=float)
 parser.add_argument("--color-variance", default=0, help="how funky the colors get [0,1]", type=float)
 parser.add_argument("--gradient-from", help="start color for gradient in hex")
 parser.add_argument("--gradient-to", help="stop color for gradient in hex")
@@ -100,9 +100,9 @@ for x in range(grid_width - 1):
         grid[0][x]
     ])
     polygons.append([
+        ((x + 1) * box_width, 0),
         grid[0][x],
-        grid[0][x + 1],
-        ((x + 1) * box_width, 0)
+        grid[0][x + 1]
     ])
 polygons.append([
     ((grid_width - 1) * box_width, 0),
@@ -134,9 +134,9 @@ for x in range(grid_width - 1):
         grid[grid_height - 1][x]
     ])
     polygons.append([
+        ((x + 1) * box_width, height),
         grid[grid_height - 1][x],
-        grid[grid_height - 1][x + 1],
-        ((x + 1) * box_width, height)
+        grid[grid_height - 1][x + 1]
     ])
 polygons.append([
     ((grid_width - 1) * box_width, height),
