@@ -10,7 +10,7 @@ def get_gradient_2d(start, stop, width, height, is_horizontal):
         return np.tile(np.linspace(start, stop, height), (width, 1)).T
 
 def get_gradient_3d(width, height, start_list, stop_list, is_horizontal_list):
-    result = np.zeros((height, width, len(start_list)), dtype=np.float)
+    result = np.zeros((height, width, len(start_list)), dtype=float)
 
     for i, (start, stop, is_horizontal) in enumerate(zip(start_list, stop_list, is_horizontal_list)):
         result[:, :, i] = get_gradient_2d(start, stop, width, height, is_horizontal)
@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--width", help="width of the picture in pixel", type=int)
 parser.add_argument("--height", help="height of the picture in pixel", type=int)
 parser.add_argument("--grid", default=28, help="grid size", type=int)
-parser.add_argument("--variance", default=1, help="how uniform the triangles are [0,1]", type=float)
+parser.add_argument("--variance", default=1, help="how uniform the triangles are [0,0.5)", type=float)
 parser.add_argument("--color-variance", default=0, help="how funky the colors get [0,1]", type=float)
 parser.add_argument("--gradient-from", help="start color for gradient in hex")
 parser.add_argument("--gradient-to", help="stop color for gradient in hex")
@@ -34,7 +34,7 @@ grid_width = args.grid
 variance = args.variance
 colorvariance = args.color_variance
 start_color = ImageColor.getcolor(args.gradient_from, "RGB")
-end_color = ImageColor.getcolor(args.gradient_to, "RGB")#
+end_color = ImageColor.getcolor(args.gradient_to, "RGB")
 outline_intensity = args.outline_intensity
 
 array = get_gradient_3d(width, height, start_color, end_color, (False, True, True))

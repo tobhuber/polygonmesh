@@ -2,7 +2,7 @@
 Python Script to generate colorful triangle mesh
 
 ## Usage
-### Instalation
+### Installation
 Clone this repository and make sure all requirements are fulfilled.
 These are: 
 
