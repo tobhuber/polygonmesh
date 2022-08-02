@@ -22,6 +22,7 @@ class SVGService():
             if print_outline:
                 outline = gradient.getpixel((int(self.w/2), int(self.h/2)))
                 poly.fill(f"rgb({r}, {g}, {b})").stroke(f"rgb({outline[0]}, {outline[1]}, {outline[2]})")
-            else: poly.fill(f"rgb({r}, {g}, {b})")
+            else: 
+                poly.fill(f"rgb({r}, {g}, {b})")
             self.draw.add(poly)
             self.draw.saveas(name)
