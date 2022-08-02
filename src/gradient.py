@@ -2,13 +2,14 @@ import numpy as np
 from PIL import Image
 class Gradient():
 
+    # code from https://github.com/nkmk/python-snippets/blob/c1f8a97b5573c9daef9671845e8ee1269e806d27/notebook/numpy_generate_gradient_image.py
     def get_gradient_2d(self, start, stop, width, height, is_horizontal):
         if is_horizontal:
             return np.tile(np.linspace(start, stop, width), (height, 1))
         else:
             return np.tile(np.linspace(start, stop, height), (width, 1)).T
 
-
+    # code from https://github.com/nkmk/python-snippets/blob/c1f8a97b5573c9daef9671845e8ee1269e806d27/notebook/numpy_generate_gradient_image.py
     def get_gradient_3d(self, width, height, start_list, stop_list, is_horizontal_list):
         result = np.zeros((height, width, len(start_list)), dtype=float)
 
