@@ -9,7 +9,7 @@ class PNGService():
         self.image = Image.new("RGBA", (width, height), (255, 255, 255, 255))        # create new white image to draw on
         self.draw = ImageDraw.Draw(self.image)
     
-    def generate_img(self, polygons, gradient, colorvariance, outline_intensity):
+    def generate_img(self, polygons, gradient, colorvariance, print_outline, outline_intensity, name="src/output/triangles.png"):
         random = Random()
         random.seed()
         for polygon in polygons:
@@ -18,7 +18,10 @@ class PNGService():
             r = int(gradient.getpixel(center)[0] + colorvariance * random.randrange(-255,255))
             g = int(gradient.getpixel(center)[1] + colorvariance * random.randrange(-255,255))
             b = int(gradient.getpixel(center)[2] + colorvariance * random.randrange(-255,255))
-            outline = gradient.getpixel((int(self.w/2), int(self.h/2)))
-            self.draw.polygon(polygon, fill=(r, g, b), outline=(outline + (int(outline_intensity * 255),)))
+            if print_outline:
+                outline = gradient.getpixel((int(self.w/2), int(self.h/2)))
+                self.draw.polygon(polygon, fill=(r, g, b), outline=(outline + (int(outline_intensity * 255),)))
+            else: 
+                self.draw.polygon(polygon, fill=(r, g, b))
 
-        self.image.save("src/output/triangles.png")
+        self.image.save(name)
