@@ -1,2 +1,5 @@
 src/__pycache__
 src/output/*
+venv
+.idea
+output

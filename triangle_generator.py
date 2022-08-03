@@ -1,4 +1,6 @@
 import argparse
+import os
+
 from PIL import Image, ImageColor
 from src.gradient import Gradient
 from src.grid import Grid
@@ -47,6 +49,8 @@ for tuple in color_list:
     grid = Grid(width=width, height=height, grid_width=grid_width, variance=variance)
     polygons = PolygonService().generate_polygons(grid, width, height)
 
+    os.makedirs("output", exist_ok=True)
+
     if output_type == "png":
         PNGService(
             width=width, 
@@ -57,7 +61,7 @@ for tuple in color_list:
             colorvariance=colorvariance,
             print_outline=outline,
             outline_intensity=outline_intensity,
-            name=f"src/output/rgb{start}_to_rgb{stop}.png"
+            name=f"output/rgb{start}_to_rgb{stop}.png"
             )
     if output_type == "svg":
         SVGService(
@@ -68,7 +72,7 @@ for tuple in color_list:
             gradient=background, 
             colorvariance=colorvariance, 
             print_outline=outline,
-            name=f"src/output/rgb{start}_to_rgb{stop}.svg"
+            name=f"output/rgb{start}_to_rgb{stop}.svg"
         )
     count += 1
     print(f"{count}/{len(color_list)}")
