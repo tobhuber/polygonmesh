@@ -12,6 +12,7 @@ class PNGService():
     def generate_img(self, polygons, gradient, colorvariance, print_outline, outline_intensity, name="src/output/triangles.png"):
         random = Random()
         random.seed()
+        
         for polygon in polygons:
             a, b, c = polygon
             center = (int((a[0] + b[0] + c[0]) / 3), int((a[1] + b[1] + c[1]) / 3))
