@@ -31,12 +31,11 @@ outline = args.print_outline
 input = args.input
 color_list = [(ImageColor.getcolor(a, "RGB"), ImageColor.getcolor(b, "RGB")) for a in args.color_list for b in args.color_list if a != b]
 if input:
-    color_list = [("", ""), ("", "")]
+    color_list = [("", "")]
 print(f"Printing {len(color_list)} pictures")
 count = 0
 for tuple in color_list:
     start, stop = tuple   
-    grid = Grid(width=width, height=height, grid_width=grid_width, variance=variance)
     if not input:
         background = Gradient().generate_gradient(width=width, height=height, start=start, stop=stop)
     else: 
@@ -45,6 +44,7 @@ for tuple in color_list:
         height = background.height
         start = "None"
         stop = "None"
+    grid = Grid(width=width, height=height, grid_width=grid_width, variance=variance)
     polygons = PolygonService().generate_polygons(grid, width, height)
 
     if output_type == "png":
